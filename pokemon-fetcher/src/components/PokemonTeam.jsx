@@ -6,9 +6,9 @@ export default class PokemonTeam extends React.Component {
 	constructor(props){
 		super(props);
 
-        this.state = {
-            pokemonTeam: []
-        }
+		this.state = {
+			pokemonTeam: []
+		}
 	}
 
 
@@ -32,11 +32,10 @@ export default class PokemonTeam extends React.Component {
 		let data = await response.json();
 		console.log(data.name);
 
-        // Invalid way to update state:
-        // this.state.pokemonTeam.push(data)
-        // Valid way to update state:
-        this.setState({pokemonTeam: [...this.state.pokemonTeam, data]})
-        // this.setState({pokemonTeam: this.state.pokemonTeam})
+		// Invalid way to update state:
+		// this.state.pokemonTeam.push(data)
+		// Valid way to update state:
+		this.setState({pokemonTeam: [...this.state.pokemonTeam, data]});
 	}
 
 	// Store data from each request
@@ -49,9 +48,9 @@ export default class PokemonTeam extends React.Component {
 			<div>
 				<h1>Pokemon data here</h1>
 
-                {this.state.pokemonTeam && this.state.pokemonTeam.map(pokemon => {
-                    return <h1>{pokemon.name}</h1>
-                })}
+				{this.state.pokemonTeam && this.state.pokemonTeam.map((pokemon, index) => {
+					return <h1 key={index}>{pokemon.name}</h1>
+				})}
 			</div>
 		)
 	}
